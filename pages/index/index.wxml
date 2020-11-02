@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="add_wrap">
+    <view class="add" bindtap='handleAdd'>+</view>
+    <input
+    type="text"
+    placeholder="Anything here..."
+    bindinput='handleInput'
+    bindconfirm="handleAdd"
+    value='{{input}}'/>
+  </view>
+  <block wx:if='{{todos.length}}'>
+    <view class="content">
+      <view class="content_item" 
+      wx:for='{{todos}}' 
+      wx:key='{{index}}'
+      bindtap='toggleItem'
+      data-index='{{index}}'
+      >
+        <icon type='{{item.completed?"success":"circle"}}'></icon>
+        <view class="item_content">{{item.content}}</view>
+        <icon type='clear' catchtap='deleteItem' data-index='{{index}}'></icon>
+      </view>
+    </view>
+    <view class="footer">
+      <view class="seleAll"
+      bindtap='toggleAll'
+      >Toggle all</view>
+      <view class="item_left" hidden='{{!itemLeft}}'>{{itemLeft}} {{item.length>1?"items":"item"}} left</view>
+      <view class="clear_item"
+      bindtap='clearCompleted'
+      >Clear completed</view>
+    </view>
+  </block>
+</view>

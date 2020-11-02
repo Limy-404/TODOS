@@ -1,0 +1,4 @@
+view,input,page{
+  margin:0;
+  padding:0;
+}
